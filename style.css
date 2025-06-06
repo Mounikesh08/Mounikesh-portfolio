@@ -1,248 +1,559 @@
-/* General Body and HTML Reset */
-body {
-    font-family: 'Roboto', sans-serif; /* A more common and readable font */
+/* --- General Body & Font Styles --- */
+/* Using a reset to ensure consistent styling across browsers */
+* {
     margin: 0;
     padding: 0;
-    background-color: #1a1a2e; /* Dark background, similar to the image */
-    color: #e0e0e0; /* Light text color */
+    box-sizing: border-box;
+}
+
+/* Define CSS Variables for easy color management and theme consistency */
+:root {
+    /* Your existing base colors */
+    --base-dark-blue: #10102c; /* Your primary background */
+    --light-text: #f0f0f0;    /* Your main light text */
+    --accent-teal: #4e9f9f;   /* Your current accent color */
+    --light-grey-text: #aaa;  /* Your secondary text color */
+
+    /* Sumanth-inspired additions/refinements for vibrancy and modern look */
+    --primary-bg-color: var(--base-dark-blue); /* Main dark background */
+    --secondary-bg-color: #1a1a2e; /* Slightly lighter dark for cards/containers */
+    --text-color: var(--light-text);
+    --heading-color: var(--accent-teal); /* Using your accent for headings */
+    --button-bg-color: var(--accent-teal); /* Buttons match accent */
+    --button-text-color: var(--base-dark-blue); /* Dark text on light button */
+    --button-hover-bg-color: #6ac4c4; /* Lighter teal on hover */
+
+    /* Grid item specific colors (adjust these for more variation) */
+    --item-color-1: #4e9f9f; /* Your color-1 */
+    --item-color-2: #5a548e; /* Your color-2 */
+    --item-color-3: #8b8074; /* Your color-3 */
+    --item-color-4: #d4b996; /* Your color-4 */
+    --item-color-5: #3a8d6e; /* A new green for variety */
+    --item-color-6: #a7476b; /* A new deep pink for variety */
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif; /* Roboto for general text */
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll from elements */
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+    -webkit-font-smoothing: antialiased; /* Better font rendering on macOS/iOS */
+    -moz-osx-font-smoothing: grayscale; /* Better font rendering on Firefox */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif; /* Montserrat for headings */
+    font-weight: 700;
+    color: var(--text-color); /* Default heading color */
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color); /* Default paragraph color */
 }
 
 a {
+    color: var(--accent-teal); /* Links use accent color */
     text-decoration: none;
-    color: inherit; /* Inherit color from parent by default */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+a:hover {
+    color: var(--button-hover-bg-color); /* Lighter accent on hover */
+    text-decoration: none; /* No underline on hover */
 }
 
-/* Header and Hero Section */
+
+/* --- Portfolio Header (Top Bar - Integrated into Hero Section) --- */
+/* Your original .portfolio-header is replaced by the header-nav within .hero-section for Sumanth's style */
+
+
+/* --- Hero Section (Main Landing Area) --- */
 .hero-section {
-    background-color: #16213e; /* Slightly different dark blue for header */
-    color: #e0e0e0;
-    padding: 50px 0 80px; /* More padding top/bottom */
     position: relative;
-    overflow: hidden; /* Hide overflow for background patterns */
-    /* Dynamic background pattern similar to the image */
-    background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232c3954" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-    background-size: 30px 30px; /* Adjust size for density */
-    background-position: top left;
-}
-
-.navbar {
-    padding: 15px 0;
-    margin-bottom: 30px;
-}
-
-.portfolio-name {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #8c7ae6; /* A contrasting color for the name */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.hero-content {
+    text-align: center;
+    padding: 120px 20px 80px; /* Top padding for content, bottom for buttons */
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    overflow: hidden; /* For background effects */
+    background-color: var(--base-dark-blue); /* Fallback */
+    /* Background similar to your hero-background but integrated */
+    background-image: url('https://www.transparenttextures.com/patterns/connected.png');
+    background-color: #1a1a2e; /* Darker than base-dark-blue for pattern */
+    background-blend-mode: overlay; /* Blend mode for pattern */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Subtle shadow at bottom */
+}
+
+/* Top-left Portfolio Title */
+.header-nav {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--light-text); /* Ensure it's visible */
+}
+
+.portfolio-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em; /* Adjust relative to parent header-nav */
+    color: var(--light-text); /* Use your light text color for the title */
+}
+
+.hero-content {
+    max-width: 800px;
+    /* Adjust margin-top to position content relative to the absolute header */
+    margin-top: -60px; /* Pulls content up towards the top */
+    z-index: 1; /* Ensure content is above background */
 }
 
 .profile-pic-container {
-    width: 150px; /* Size of the circular image */
+    width: 150px;
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
-    margin-bottom: 25px;
-    border: 3px solid #6c5ce7; /* Border color around the profile picture */
-    box-shadow: 0 0 15px rgba(108, 92, 231, 0.6); /* Subtle glow */
+    margin: 0 auto 30px;
+    border: 4px solid var(--accent-teal); /* Accent border around pic */
+    box-shadow: 0 0 15px rgba(78, 159, 159, 0.6); /* Subtle glow effect */
 }
 
 .profile-pic {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the circular area */
-}
-
-.hero-content h1 {
-    font-size: 2.2em;
-    margin-bottom: 30px;
-    color: #e0e0e0;
-    font-weight: 700;
+    object-fit: cover;
 }
 
 .social-links {
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    font-size: 1.8rem; /* Larger social icons */
+    margin: 0 12px;
+    color: var(--light-text); /* Default icon color */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-teal); /* Accent color on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.hero-description { /* This is your <h2> in the hero section */
+    max-width: 700px;
+    font-size: 2.2rem;
+    line-height: 1.4;
     margin-bottom: 40px;
-    display: flex;
-    gap: 25px; /* Space between icons */
-}
-
-.social-links a img {
-    width: 40px; /* Size of social icons */
-    height: 40px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-links a img:hover {
-    transform: translateY(-5px);
-    filter: brightness(1.2); /* Make icons brighter on hover */
-}
-
-.main-nav-buttons {
-    display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-    justify-content: center;
-    gap: 15px; /* Space between buttons */
-    margin-top: 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border: 1px solid #4CAF50; /* Green border, similar to Sumanth's */
-    border-radius: 5px;
-    color: #4CAF50;
     font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    color: var(--light-text);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow */
 }
 
-.btn:hover {
-    background-color: #4CAF50;
-    color: #16213e; /* Dark text on hover */
-    border-color: #4CAF50;
+.main-navigation-buttons { /* This is your .hero-nav */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem; /* Space between buttons */
 }
 
-/* Portfolio Sections (Projects, YouTube, Articles, Achievements) */
-.portfolio-section {
-    padding: 60px 0;
-}
-
-.portfolio-section h2 {
-    font-size: 2.5em;
-    text-align: left; /* Align section titles to the left */
-    margin-bottom: 40px;
-    color: #e0e0e0;
-    border-bottom: 2px solid #6c5ce7; /* Underline for section titles */
-    display: inline-block; /* Make border-bottom fit content */
-    padding-bottom: 10px;
-    margin-left: 20px; /* Align with container padding */
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid, minimum 400px wide items */
-    gap: 20px; /* Space between grid items */
-    padding: 0 20px; /* Match container padding */
-}
-
-.grid-item {
-    background-color: #2c3954; /* Default background for grid items */
+.nav-button {
+    padding: 0.9rem 2rem;
+    background-color: var(--button-bg-color); /* Accent background */
+    color: var(--button-text-color); /* Dark text on button */
     border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px; /* Minimum height for grid items */
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.grid-item:hover {
-    transform: translateY(-8px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-.grid-item-content {
-    padding: 30px;
-    width: 100%; /* Ensure content takes full width */
-    color: #e0e0e0;
-}
-
-.grid-item-content h4 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
     font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-.grid-item-content p {
-    font-size: 1em;
-    color: #b0b0b0;
+.nav-button:hover {
+    background-color: var(--button-hover-bg-color); /* Lighter accent on hover */
+    color: var(--base-dark-blue); /* Keep dark text */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- General Section Styling (For all portfolio sections) --- */
+.portfolio-section {
+    padding: 80px 20px; /* Consistent padding for all main sections */
+    background-color: var(--primary-bg-color);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Subtle separator line */
+}
+
+.section-title { /* Your original .section-title and .text-section h3.section-title */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8rem;
+    color: var(--heading-color); /* Use accent color for section titles */
+    margin-bottom: 50px;
     text-transform: uppercase;
+    position: relative;
+    display: inline-block; /* To apply underline effect properly */
     letter-spacing: 1px;
 }
 
-/* Color variations for grid items, matching Sumanth's design */
-.grid-item.color-1 { background-color: #3f4e6e; } /* Blue-ish */
-.grid-item.color-2 { background-color: #6a5acd; } /* Purple-ish */
-.grid-item.color-3 { background-color: #4e9f9f; } /* Teal-ish */
-.grid-item.color-4 { background-color: #d19a66; } /* Orange-ish */
-
-/* Footer */
-footer {
-    background-color: #16213e;
-    color: #b0b0b0;
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 60px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+.section-title::after { /* Underline effect for section titles */
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -15px; /* Position below text */
+    width: 80px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background-color: var(--accent-teal); /* Accent color for underline */
+    border-radius: 2px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 1.8em;
-    }
 
-    .main-nav-buttons {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        align-items: center;
-    }
+/* --- Content Grid Section (For Projects, and now Achievements) --- */
+.grid-container {
+    display: grid;
+    /* Responsive grid: 2 columns typically, 1 on small screens, 3+ on large */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between grid items */
+    max-width: 1200px; /* Max width of the grid */
+    margin: 0 auto; /* Center the grid container */
+    padding: 0 20px; /* Internal padding for the grid */
+}
 
-    .btn {
-        width: 80%; /* Make buttons wider */
-    }
+.grid-item {
+    background-color: var(--secondary-bg-color); /* Darker background for items */
+    border-radius: 12px; /* Rounded corners */
+    overflow: hidden;
+    text-align: left;
+    min-height: 250px; /* Consistent height for project/video cards */
+    display: flex;
+    align-items: flex-end; /* Content aligns to the bottom */
+    padding: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
 
-    .portfolio-section h2 {
-        font-size: 2em;
-        margin-left: 0;
-        text-align: center;
-    }
+/* Individual Grid Item Colors (Your existing ones) */
+.grid-item.color-1 { background-color: var(--item-color-1); }
+.grid-item.color-2 { background-color: var(--item-color-2); }
+.grid-item.color-3 { background-color: var(--item-color-3); }
+.grid-item.color-4 { background-color: var(--item-color-4); }
+/* Add new colors if you use more than 4 items and want distinct backgrounds */
+.grid-item.color-5 { background-color: var(--item-color-5); }
+.grid-item.color-6 { background-color: var(--item-color-6); }
 
+
+.grid-item:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* More prominent shadow */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+.grid-item-content {
+    width: 100%;
+    color: var(--text-color); /* Text color inside grid items */
+}
+
+.grid-item-content h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    margin: 0 0 0.8rem 0;
+    line-height: 1.3;
+    color: var(--light-text); /* Ensure heading is light */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.grid-item-content p {
+    margin: 0;
+    letter-spacing: 0.8px;
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.9;
+    color: var(--light-text);
+}
+
+
+/* --- Text Content Sections (Experience, Skills) --- */
+.text-section {
+    padding-bottom: 60px; /* Adjust spacing */
+    background-color: var(--primary-bg-color); /* Ensure consistent background */
+    color: var(--text-color);
+}
+
+.text-content {
+    max-width: 900px; /* Slightly wider text content */
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent padding */
+    text-align: left;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--light-text); /* Consistent text color */
+    margin-bottom: 1.5rem;
+}
+.text-content p strong {
+    color: var(--heading-color); /* Highlight strong text */
+}
+
+.text-content .job-item { /* Changed from .job to .job-item for consistency */
+    background-color: var(--secondary-bg-color); /* Darker background for job cards */
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid var(--accent-teal); /* Accent line on the left */
+}
+.text-content .job-item h4 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: var(--heading-color); /* Heading color for job titles */
+}
+.text-content .job-item h5 {
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--light-grey-text);
+    margin: 0.5rem 0 1rem;
+}
+
+.text-content ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+}
+
+.text-content li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--light-text);
+    margin-bottom: 0.7rem;
+    padding-left: 2rem; /* Space for custom bullet */
+    position: relative;
+}
+
+.text-content li::before {
+    content: '▶'; /* Custom bullet point */
+    position: absolute;
+    left: 0;
+    color: var(--accent-teal); /* Accent color for bullet */
+    font-size: 0.9rem;
+    top: 0.15em; /* Adjust vertical alignment */
+}
+
+/* Your original .sub-heading is no longer needed as section title handles it */
+/* .text-content .sub-heading {
+    margin-top: 3rem;
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+} */
+
+
+/* --- Achievements & Certifications Section Specifics --- */
+.achievements-grid .grid-item { /* Target grid-item specifically within achievements grid */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Align content to top */
+    align-items: center; /* Center horizontally */
+    text-align: center;
+    min-height: 300px; /* Give more space for image and text */
+    padding: 25px;
+}
+
+.achievement-item .grid-item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1; /* Allows content to expand and push footer down */
+}
+
+.achievement-item h4 { /* Title of the achievement/certification */
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    color: var(--light-text);
+}
+
+.achievement-item .issuing-org {
+    font-size: 0.95rem;
+    color: rgba(240, 240, 240, 0.8);
+    margin-bottom: 15px;
+}
+
+.achievement-item .cert-thumbnail {
+    max-width: 150px; /* Size of the certification thumbnail */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.achievement-item .cert-thumbnail:hover {
+    transform: scale(1.08); /* Zoom effect on thumbnail hover */
+}
+
+.achievement-item .view-cert-link {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center;
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    margin-top: 10px; /* Space if no thumbnail and only text link */
+}
+
+.achievement-item .view-cert-link:hover {
+    color: var(--accent-teal);
+    text-decoration: underline;
+}
+
+.achievement-item .date-earned {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(240, 240, 240, 0.7);
+    margin-top: 10px;
+}
+
+.achievement-item .achievement-description {
+    font-size: 0.95rem;
+    margin-top: 15px;
+    line-height: 1.6;
+    color: rgba(240, 240, 240, 0.9);
+    flex-grow: 1; /* Allow description to take available space */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--secondary-bg-color); /* Darker background */
+    color: var(--light-grey-text);
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero-description {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
     .grid-container {
-        grid-template-columns: 1fr; /* Single column on very small screens */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .grid-item {
+        min-height: 220px;
+    }
+    .grid-item-content h4 {
+        font-size: 1.4rem;
+    }
+    .achievement-item {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-nav {
+        font-size: 1em;
+        top: 15px;
+        left: 15px;
+    }
+    .hero-description {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+    }
+    .main-navigation-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px;
+    }
+    .nav-button {
+        width: 90%;
+        max-width: 300px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    .portfolio-section {
+        padding: 60px 15px;
+    }
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+        padding: 0 10px;
+        gap: 20px;
+    }
+    .grid-item {
+        min-height: 180px; /* Adjust height for single column */
+        padding: 20px;
+    }
+    .grid-item-content h4 {
+        font-size: 1.3rem;
+    }
+    .achievement-item {
+        min-height: 250px;
+    }
+    .text-content {
         padding: 0 15px;
     }
-
-    .grid-item {
-        min-height: 180px; /* Slightly smaller height */
+    .text-content p, .text-content li {
+        font-size: 1rem;
     }
-
-    .grid-item-content h4 {
-        font-size: 1.3em;
+    .job-item h4 {
+        font-size: 1.6rem;
+    }
+    .job-item h5 {
+        font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.5em;
-    }
-
     .profile-pic-container {
         width: 120px;
         height: 120px;
     }
-
-    .navbar .portfolio-name {
-        font-size: 1.2em;
+    .hero-section {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    .hero-content {
+        margin-top: -20px;
+    }
+    .hero-description {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+    }
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    .grid-item-content h4 {
+        font-size: 1.2rem;
+    }
+    .achievement-item {
+        min-height: 220px;
+    }
+    .achievement-item .cert-thumbnail {
+        max-width: 100px;
     }
 }
