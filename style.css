@@ -115,20 +115,21 @@ a:hover {
 }
 
 .profile-pic-container {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 30px;
-    border: 4px solid var(--accent-teal); /* Accent border around pic */
-    box-shadow: 0 0 15px rgba(78, 159, 159, 0.6); /* Subtle glow effect */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 30px;
+    border: 4px solid var(--accent-teal); /* Accent border around pic */
+    box-shadow: 0 0 15px rgba(78, 159, 159, 0.6); /* Subtle glow effect */
 }
 
 .profile-pic {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
 
 .social-links {
     margin-bottom: 30px;
